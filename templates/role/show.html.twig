@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'un role{% endblock %}
+
+{% block main %}
+    <h1>Détail d'un role</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Identifiant</th>
+                <td>{{ role.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ role.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="consultant_show_btn col-sm-12 group_buttons">
+        <button class="btn btn-secondary btn-sm" type="button"> <a href="{{ path('role') }}">Retour à la liste</a></button>
+        <button class="btn btn-secondary btn-sm" type="button"><a href="{{ path('role_edit', {'id': role.id}) }}">Editer</a></button>
+        <div class="supprimer">
+            {{ include('role/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

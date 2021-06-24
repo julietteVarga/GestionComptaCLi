@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+{% endblock %}
+{% block main %}
+    <h1>Calendrier</h1>
+    <input type="hidden" name="_token" value="{{ csrf_token('calendrier' ) }}">
+    <div id="calendrier"></div>
+    {% block javascripts %}
+        <script>
+            window.onload = () => {
+                let calendarEl = document.querySelector('#calendrier');
+                console.log('je suis le calendrier');
+                let calendar = new FullCalendar.Calendar(calendarEl, {
+                    defaultView: 'dayGridMonth',
+                    editable: true,
+                    //googleCalendarId : '258089620526-g97op99av8r416r6ecfgs6u502hrmrh6.apps.googleusercontent.com',
+                    //googleCalendarApiKey: 'AIzaSyB3pnjgDiW3mpvQRHEAw0SHk490hbY3RZI',
+                    googleCalendarId: '1049660235991-40q823m02dg5iv6vqck15ddf9o2pper0.apps.googleusercontent.com',
+                    // http://fullcalendar.io/docs/google_calendar/
+                    //googleCalendarApiKey: 'dfQ-qt36YO6XXJsgJoiUch1_',
+                    googleCalendarApiKey: 'AIzaSyD6a7DoNuyENcZNsIhXXoEzvIsQvpe05Ko',
+                    locale: 'fr',
+                    timezone: 'Europe/Paris',
+                    events: {{ data|raw }},
+                    eventResizableFromStart: true,
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay',
+                    },
+                    buttonText: {
+                        today: 'Aujourd\'hui',
+                        month: 'Mois',
+                        week: 'Semaine',
+                        day: 'Jour'
+                    },
+                    plugins: ['interaction', 'dayGrid', 'timeGrid'], // https://fullcalendar.io/docs/plugin-index
+                    timeZone: 'UTC',
+                    eventDrop: function (e) {
+
+                        console.log('ona changé levenement')
+                        console.log(e)
+
+                        let url = `./calendrier/${e.event.id}/edit`;
+                        let donnees = {
+                            "id": e.event.id,
+                            "title": e.event.title,
+                            "description": e.event.extendedProps.description,
+                            "start": e.event.start,
+                            "end": e.event.end,
+                            "consultant": e.event.extendedProps.consultant_id,
+                            "createur": e.event.extendedProps.createur_id
+
+                        };
+                        let xhr = new XMLHttpRequest;
+                        let jsonDonnees = JSON.stringify(donnees);
+                        console.log(jsonDonnees)
+                        xhr.open("POST", url, true);
+                        xhr.send(jsonDonnees);
+
+                    }
+                });
+
+
+                calendar.render();
+            };
+        </script>
+
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
+{% endblock %}

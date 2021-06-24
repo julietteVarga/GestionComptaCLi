@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rendez-Vous{% endblock %}
+
+{% block main %}
+    <h1>Rendez-Vous</h1>
+
+    <div class="nouvelle_facture_btn col-sm-2 col-md-1">
+        <button class=" btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('rendez_vous_new') }}" title="Créer un nouveau rendez-vous">Créer un nouveau rendez-vous</a>
+        </button>
+    </div>
+
+    <table class="table" style="margin-top:20px">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Date de début</th>
+                <th>Heure de début</th>
+                <th>Date de fin</th>
+                <th>Heure de fin</th>
+                <th>Consultant</th>
+                <th>Commentaire</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rendez_vou in rendez_vouses %}
+            <tr>
+                <td>{{ rendez_vou.id }}</td>
+                <td>{{ rendez_vou.titre }}</td>
+                <td>{{ rendez_vou.dateDebut ? rendez_vou.dateDebut|date('d-m-Y') : '' }}</td>
+                <td>{{ rendez_vou.dateDebut ? rendez_vou.dateDebut|date('H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.dateFin ? rendez_vou.dateFin|date('d-m-Y') : '' }}</td>
+                <td>{{ rendez_vou.dateFin ? rendez_vou.dateFin|date('H:i:s') : '' }}</td>
+                <td>{{ rendez_vou.consultant.prenom }} {{ rendez_vou.consultant.nom }}</td>
+                <td>{{ rendez_vou.commentaire }}</td>
+                <td>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-sm-3">
+                                <button class="btn btn-secondary btn-sm" type="button"> <a href="{{ path('rendez_vous_show', {'id': rendez_vou.id}) }}">Détail</a></button>
+                            </div>
+                            <div class="col col-sm-3">
+                                <button class="btn btn-secondary btn-sm" type="button"> <a href="{{ path('rendez_vous_edit', {'id': rendez_vou.id}) }}">Editer</a></button>
+                            </div>
+                            <div class="col col-sm-3">
+                                <div class="supprimer">
+                                    {{ include('rendez_vous/_delete_form.html.twig') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas de rendez-vous dans la base de données !</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="nouvelle_facture_btn col-sm-2 col-md-1">
+        <button class=" btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('rendez_vous_new') }}" title="Créer un nouveau rendez-vous">Créer un nouveau rendez-vous</a>
+        </button>
+    </div>
+{% endblock %}

@@ -1,0 +1,131 @@
+*{
+    font-family: 'Akaya Kanadaka', cursive;
+}
+body{
+    background-color: #6290C8;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, main , footer{
+    padding: 10px 20px;
+}
+
+main {
+    flex: 1;
+}
+
+footer{
+    text-align: center;
+}
+#logo {
+    width: 50px;
+    height: 50px;
+}
+.navbar-light{
+    background-color: #E8EBF7;
+}
+
+
+.btn-secondary{
+    background-color: #09BC8A;
+}
+
+.add-form label{
+    display: block;
+    margin-top: 15px;
+}
+
+.add-form input,
+.add-form textarea{
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-form button{
+    margin-top: 15px;
+}
+
+
+.add-form label{
+    display: block;
+    margin-top: 15px;
+}
+
+.add-form input,
+.add-form textarea{
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-form button{
+    margin-top: 15px;
+}
+
+.alert{
+    padding: 20px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4em;
+}
+.alert-success{
+    background-color: #718C00;
+
+}
+.alert-warning{
+    background-color: orange;
+
+}
+
+/*------------------------------------------------------------------*/
+/*                  Animation elephant bas de page                  */
+/*------------------------------------------------------------------*/
+#logophp {
+    max-width: 32px;
+    animation-duration: 7s;
+    animation-name: move;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    position: relative;
+}
+
+@keyframes move {
+    from {
+        transform: rotate(0deg);
+        left: 0;
+    }
+    to{
+        transform: rotate(10deg);
+        left: calc(50% - 32px);
+    }
+}
+
+
+/*------------------------------------------------------------------*/
+/*                FIN Animation elephant bas de page                */
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+/*                          FACTURE PDF                             */
+/*------------------------------------------------------------------*/
+.facturepdf{
+    background-color: #6290C8;
+}
+
+#blocFactureEnergieDenisSanchez{
+    float:left;
+    width: 50%;
+}
+
+#blocFactureConsultant{
+    float:left;
+    width: 48%;
+}
+/*------------------------------------------------------------------*/
+/*                          FIN FACTURE PDF                         */
+/*------------------------------------------------------------------*/

@@ -1,0 +1,41 @@
+{{ form_start(form) }}
+<div class="rue">
+    <div class="text_ligne">
+        {{ form_label (form.adresse.rue) }}
+    </div>
+    <div class="widget_adresse">
+        {{ form_widget (form.adresse.rue) }}
+    </div>
+    {{ form_errors (form.adresse.rue) }}
+</div>
+
+<div class="ville">
+    <div class="text_ligne">
+        {{ form_label (form.adresse.ville) }}
+    </div>
+    <div class="widget_adresse">
+        {{ form_widget (form.adresse.ville) }}
+    </div>
+    {{ form_errors (form.adresse.ville) }}
+</div>
+<div class="cp">
+    <div class="text_ligne">
+        {{ form_label (form.adresse.cp) }}
+    </div>
+    <div class="widget_adresse">
+        {{ form_widget (form.adresse.cp) }}
+    </div>
+    {{ form_errors (form.adresse.cp) }}
+</div>
+<div class="pays">
+    <div class="text_ligne">
+        {{ form_label (form.adresse.pays) }}
+    </div>
+    <div class="widget_adresse">
+        {{ form_widget (form.adresse.pays) }}
+    </div>
+    {{ form_errors (form.adresse.pays) }}
+</div>
+{{ form_widget(form) }}
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

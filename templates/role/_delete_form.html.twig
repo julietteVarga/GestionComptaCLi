@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('role_delete', {'id': role.id}) }}"
+      onsubmit="return confirm('Etes vous sur de vouloir supprimer ce role {{ role.nom }}?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ role.id) }}">
+    <input type="submit" class="btn btn-secondary btn-sm text-danger" value="Supprimer">
+</form>

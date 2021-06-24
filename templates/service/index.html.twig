@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+{% block main %}
+    <h1>Services</h1>
+    <div class="nouvelle_facture_btn col-sm-2 col-md-1">
+        <button class=" btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('service_new') }}">Nouveau Service</a></button>
+    </div>
+    <table class="table" style="margin-top: 15px">
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Libellé</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="">
+        {% for service in services %}
+            <tr class="">
+                <td class="">{{ service.id }}</td>
+                <td >{{ service.libelle }}</td>
+                <td >
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-sm-2 col-md-2 offset-md-5 col-lg-1 offset-lg-8">
+                                <button class="btn btn-secondary btn-sm" type="button">
+                                    <a href="{{ path('service_show', {'id': service.id}) }}">Détail</a>
+                                </button>
+                            </div>
+                            <div class="col col-sm-2 col-md-2 col-lg-1">
+                                <button class="btn btn-secondary btn-sm" type="button">
+                                    <a href="{{ path('service_edit', {'id': service.id}) }}">Editer</a>
+                                </button>
+                            </div>
+                            <div class="col col-sm-2 col-md-2 col-lg-1">
+                                {{ include('service/_delete_form.html.twig') }}
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas d'enregistrements</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="nouvelle_facture_btn col-sm-2 col-md-1">
+        <button class=" btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('service_new') }}">Nouveau Service</a></button>
+    </div>
+{% endblock %}

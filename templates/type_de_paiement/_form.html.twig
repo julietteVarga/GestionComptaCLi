@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+<div class="consultant_show_btn col-sm-12 group_buttons">
+    <button class="btn btn-secondary btn-sm" type="button"><a href="{{ path('type_de_paiement') }}">Retour à la liste</a></button>
+    <button class="btn btn-secondary btn-sm" type="submit">{{ button_label|default('Enregistrer') }}</button>
+    {% if (type_de_paiement.id != null ) %}
+        {{ include('type_de_paiement/_delete_form.html.twig') }}
+    {% endif %}
+</div>
+{{ form_end(form) }}

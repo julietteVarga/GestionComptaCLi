@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type de paiement{% endblock %}
+
+{% block main %}
+    <h1>Types De Paiements</h1>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col col-sm-4 offset-sm-10  col-lg-2 offset-lg-11">
+                <button class="btn btn-secondary btn-sm " type="button"> <a href="{{ path('type_de_paiement_new') }}">Créer un nouveau</a></button>
+            </div>
+        </div>
+    </div>
+    <table class="table" style="margin-top: 15px">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_de_paiement in type_de_paiements %}
+            <tr>
+                <td>{{ type_de_paiement.id }}</td>
+                <td>{{ type_de_paiement.libelle }}</td>
+                <td>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-sm-2 col-md-2 offset-md-5 col-lg-1 offset-lg-8">
+                                <button class="btn btn-secondary btn-sm" type="button"><a href="{{ path('type_de_paiement_show', {'id': type_de_paiement.id}) }}">Détail</a></button>
+                            </div>
+                            <div class="col col-sm-2 col-md-2 col-lg-1">
+                                <button class="btn btn-secondary btn-sm" type="button"><a href="{{ path('type_de_paiement_edit', {'id': type_de_paiement.id}) }}">Editer</a></button>
+                            </div>
+                            <div class="col col-sm-2 col-md-2 col-lg-1">
+                                {{ include('type_de_paiement/_delete_form.html.twig') }}
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas de type de paiement trouvé !</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col col-sm-4 offset-sm-10  col-lg-2 offset-lg-11">
+                <button class="btn btn-secondary btn-sm " type="button"> <a href="{{ path('type_de_paiement_new') }}">Créer un nouveau</a></button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

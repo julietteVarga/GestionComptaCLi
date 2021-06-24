@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('type_de_paiement_delete', {'id': type_de_paiement.id}) }}"
+      onsubmit="return confirm('Etes vous sur de vouloir supprimer ce type de paiement {{ type_de_paiement.libelle }}?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ type_de_paiement.id) }}">
+    <input type="submit" class="btn btn-secondary btn-sm text-danger" value="Supprimer">
+</form>

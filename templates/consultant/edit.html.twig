@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Editer le/la consultant(e){% endblock %}
+{% block main %}
+    <h1>{{ parent() }}Editer {% if consultant.sex == 'Masculin' %}
+            le consultant: {% else %} la consultante: {% endif %} {{ consultant.prenom }} {{ consultant.nom }}
+    </h1>
+    <div class="col-sm-12">
+        {{ include('consultant/_form.html.twig', {'button_label': 'Modifier'}) }}
+    </div>
+    <hr>
+    <h2> {% if commentaires|length >= 1 %} Commentaires: {{ commentaires|length }} {% else %} Pas de commentaires:
+        {% endif %}
+    </h2>
+    <ul>
+        {% for commentaire in commentaires %}
+            <li>
+                <p>Le {{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('h:i') }}</p>
+                <p>{{ commentaire.description }}</p>
+            </li>
+        {% else %}
+            <li>Pas de commentaire</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

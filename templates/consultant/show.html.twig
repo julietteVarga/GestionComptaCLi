@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'un consultant{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <h3 class="mb-5"> Détails {% if consultant.sex == 'Masculin' %} du consultant: {% else %} de la consultante:{% endif %} {{ consultant.prenom }} {{ consultant.nom }} </h3>
+        <div class="row justify-content-md-center">
+            <div class="col-sm-12 col-md-4 col-lg-4 ">
+                {% if(consultant.photos is not empty) %}
+                    <img class="photoShow" src="{{ asset('uploads/photos/'~ consultant.photos) }}"
+                         alt="{{ consultant.photos }}"
+                         title="{{ consultant.nom }} {{ consultant.prenom }} ">
+                {% endif %}
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <table class="table_facture_show">
+                    <tr>
+                        <th class="label_ligne">Sexe:</th>
+                        <td class="text_ligne">{{ consultant.sex }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Nom:</th>
+                        <td class="text_ligne">{{ consultant.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Prénom:</th>
+                        <td class="text_ligne">{{ consultant.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Adresse:</th>
+                        <td class="text_ligne">{{ consultant.adresse.rue }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Code Postal:</th>
+                        <td class="text_ligne">{{ consultant.adresse.cp }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Ville:</th>
+                        <td class="text_ligne">{{ consultant.adresse.ville }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Pays:</th>
+                        <td class="text_ligne">{{ consultant.adresse.pays|country_name('fr') }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Email:</th>
+                        <td class="text_ligne">{{ consultant.email }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col col-sm-12 col-md-6 col-lg-4">
+                <table class="table-show">
+                    <tr>
+                        <th class="label_ligne">Tél:</th>
+                        <td class="text_ligne">{{ consultant.tel }}</td>
+                    </tr>
+
+                    <tr>
+                        <th class="label_ligne">Ville de naissance:</th>
+                        <td class="text_ligne">{{ consultant.villeNaissance }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Pays de naissance:</th>
+                        <td class="text_ligne">{{ consultant.paysNaissance|country_name('fr') }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Date de naissance:</th>
+                        <td class="text_ligne">{{ consultant.dateNaissance ? consultant.dateNaissance|date('d-m-Y') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Heure de naissance:</th>
+                        <td class="text_ligne">{{ consultant.heureNaissance ? consultant.heureNaissance|date(' H:i') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th class="label_ligne">Date de creation:</th>
+                        <td class="text_ligne">{{ consultant.dateCreation ? consultant.dateCreation|date('d-m-Y H:i:s') : '' }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="consultant_show_btn col-sm-12 group_buttons">
+        <button class="btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('consultant') }}">Retourner à la liste</a>
+        </button>
+
+        <button class="btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('consultant_edit', {'id': consultant.id}) }}">Editer</a>
+        </button>
+        <div class="supprimer">
+            {{ include('consultant/_delete_form.html.twig') }}
+        </div>
+        </div>
+
+  {#   <div class="consultant_show_btn col-sm-12 group_buttons">
+
+        <button class="btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('facture') }}">Retourner à la liste</a>
+        </button>
+
+        <button class="btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('facture_edit', {'id': facture.id}) }}">Editer</a>
+        </button>
+
+        <div class="supprimer">
+            {{ include('facture/_delete_form.html.twig') }}
+        </div>
+    </div>#}
+
+    <hr>
+    <h2> {% if commentaires|length >= 1 %} Commentaires: {{ commentaires|length }} {% else %} Pas de commentaires: {% endif %}</h2>
+    <ul>
+        {% for commentaire in commentaires %}
+            <li>
+                <p>Le {{ commentaire.date|date('d-m-Y') }} à {{ commentaire.date|date('h:i') }}</p>
+                <p>{{ commentaire.description }}</p>
+                {{ include('commentaire_consultant/_delete_form.html.twig') }}
+            </li>
+        {% else %}
+            <li>Pas de commentaire</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <div>
+        <h2>Ajouter un commentaire</h2>
+        {% include('commentaire_consultant/_form.html.twig') %}
+    </div>
+{% endblock %}

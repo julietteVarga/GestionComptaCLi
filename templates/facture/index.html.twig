@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facture index{% endblock %}
+
+{% block main %}
+    <h1>Factures</h1>
+
+    {# total items count #}
+    <div class="count">
+        Nombre de Factures :    {{ pagination.getTotalItemCount }}
+    </div>
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col col-sm-6">
+                    {{ knp_pagination_filter(pagination, {
+                        'c.nom': 'Nom du consultant',
+                        'c.prenom': 'Prénom du consultant',
+                        'f.numeroFacture': 'Numéro de facture',
+                        'f.numeroChequeOuPaypal': 'Numéro de chéque ou Paypal',
+                        't.libelle' : 'Type de Paiement'
+                    }) }}
+                </div>
+                <div class="nouvelle_facture_btn col col-sm-2 offset-sm-4 col-md-1 offset-md-5">
+                    <button class="btn btn-secondary btn-sm w3-padding w3-display-middle" type="button">
+                        <a href="{{ path('facture_new') }}" title="Créer une nouvelle facture">Créer une nouvelle facture</a></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+        {# display navigation #}
+        <div class="navigation" style="float:right;margin-right: 25px;">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        <table class="table align-middle table-striped table-hover table-sm">
+            <thead>
+            <th scope="col" {% if pagination.isSorted('f.numeroFacture') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Numéro de facture', 'f.numeroFacture') }}
+            </th>
+            <th scope="col" {% if pagination.isSorted('c.nom') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Nom', 'c.nom') }}
+            </th>
+            <th scope="col" {% if pagination.isSorted('c.prenom') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Prénom', 'c.prenom') }}
+            </th>
+            <th>Adresse</th>
+            <th>C.P</th>
+            <th>Ville</th>
+            <th>Pays</th>
+            <th>Email</th>
+            <th>Tél</th>
+            <th>Montant</th>
+            <th scope="col" {% if pagination.isSorted('f.date') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Date', 'f.date') }}
+            </th>
+            <th scope="col" {% if pagination.isSorted('t.libelle') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Type', 't.libelle') }}
+            </th>
+            <th scope="col" {% if pagination.isSorted('f.numeroChequeOuPaypal') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Numéro de cheque ou Paypal', 'f.numeroChequeOuPaypal') }}
+            </th>
+            <th>Service</th>
+            <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for facture in pagination %}
+                <tr>
+                    <td>
+                        <button class="btn btn-secondary btn-sm" type="button"><a
+                                    href="{{ path('facture_show', {'id': facture.id}) }}">{{ facture.numerofacture }}</a>
+                        </button>
+                    </td>
+                    <td>{{ facture.consultant.nom }}</td>
+                    <td>{{ facture.consultant.prenom }}</td>
+                    <td>{{ facture.consultant.adresse.rue }}</td>
+                    <td>{{ facture.consultant.adresse.cp }}</td>
+                    <td>{{ facture.consultant.adresse.ville }}</td>
+                    <td>{{ facture.consultant.adresse.pays }}</td>
+                    <td>{{ facture.consultant.email }}</td>
+                    <td>{{ facture.consultant.tel }}</td>
+                    <td>{{ facture.montantTotal }}</td>
+                    <td>{{ facture.date ? facture.date|date('d-m-Y') : '' }}</td>
+                    <td>{{ facture.TypeDePaiement.libelle }}</td>
+                    <td>{{ facture.numeroChequeOuPaypal }}</td>
+                    <td>
+                        {% if (facture.ligneFactures != null) %}
+                            <ul>
+                                {% for ligneFacture in facture.ligneFactures %}
+                                    {% if (ligneFacture != null) and (ligneFacture.service!= null) %}
+                                        <li>{{ ligneFacture.service.libelle ?? ' ' }}</li>
+                                    {%  endif%}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col col-sm-auto col-lg-auto">
+                                    <button class="btn btn-secondary btn-sm" type="button">
+                                        <a href="{{ path('facture_show', {'id': facture.id}) }}">Détail</a>
+                                    </button>
+                                </div>
+                                <div class="col col-sm-auto col-lg-auto">
+                                    <button class="btn btn-secondary btn-sm" type="button">
+                                        <a href="{{ path('facture_edit', {'id': facture.id}) }}">Editer</a>
+                                    </button>
+                                </div>
+                                <div class="col col-sm-auto col-lg-auto">
+                                    <button class="btn btn-secondary btn-sm" type="button">
+                                        <a href="{{ path('pdf_generation',{'id': facture.id}) }}" target="_blank">PDF</a>
+                                    </button>
+                                </div>
+                                <div class="col col-sm-auto col-lg-auto">
+                                    {{ include('facture/_delete_form.html.twig') }}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Pas de facture présente dans le système !</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {# display navigation #}
+        <div class="navigation" style="float:right;margin-right: 25px;">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+<div class="container-fluid">
+    <div class="nouvelle_facture_btn col col-sm-2 offset-sm-10 col-md-1 offset-md-11">
+        <button class="btn btn-secondary btn-sm w3-padding w3-display-middle" type="button">
+            <a href="{{ path('facture_new') }}" title="Créer une nouvelle facture">Créer une nouvelle facture</a></button>
+    </div>
+</div>
+{% endblock %}

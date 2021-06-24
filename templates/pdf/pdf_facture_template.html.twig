@@ -1,0 +1,144 @@
+ <!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+           <style>
+            #blocFactureEnergieDenisSanchez{
+                float:left;
+                width: 50%;
+                margin:15px;
+                font-size:0.8em;
+            }
+
+            #blocFactureConsultant{
+                float:left;
+                width: 48%;
+            }
+
+            #blocPrestation{
+                clear:both;
+            }
+            #blocFactureNumero{
+                clear: both;
+            }
+            #blocFin{
+                margin-top: 20px;
+            }
+            #logo{
+                margin:15px;
+                width:100px;
+                height: 100px;
+            }
+            footer{
+                font-size: 0.8em;
+                font-family: "Arial Black";
+            }
+            .small{
+                font-size: 0.7em;
+            }
+            .centrer{
+                text-align: center;
+            }
+            .tableau{
+                border: 1px solid cornflowerblue;
+                width: 100%;
+            }
+            .tableauEntete{
+                border: 1px solid cornflowerblue;
+            }
+            .dateFacture{
+                text-align: right;
+                margin-right: 205px;
+            }
+            h1{
+                vertical-align: middle;
+            }
+            .numFacture{
+                text-align: right;
+                margin-right: 50px;
+            }
+            main{
+                min-height: 800px;
+            }
+            .prix{
+                text-align: right;
+            }
+        </style>
+        <title>{{  title }}</title>
+    </head>
+    <body class="facturepdf">
+        <header>
+            <div id="blocEnteteFacture">
+                <h1><img src="{{ logo }}" id="logo"/>{{ title }}</h1>
+            </div>
+        </header>
+        <main>
+        <div id="blocFactureEnergieDenisSanchez">
+            <p>Energie Denis Sanchez</p>
+            <p>8 rue Antonio Vivaldi</p>
+            <p>44590 Derval France</p>
+            <p><u>Tél:</u> 06.12.48.69.14</p>
+            <p><u>Email:</u> <b>contact@energie-denis-sanchez.fr</b></p>
+            <p><u>Site:</u> <a href="http://energie-denis-sanchez.fr">http://energie-denis-sanchez.fr</a></p>
+            <p><u>N° SIRET:</u> 834 158 230 00013</p>
+        </div>
+
+        <div id="blocFactureConsultant">
+            <p>A : {{ facture.consultant.nom}}  {{ facture.consultant.prenom}} </p>
+            <p>Adresse: {{ facture.consultant.adresse.rue }}, {{ facture.consultant.adresse.ville }}, {{ facture.consultant.adresse.pays|country_name('fr') }}</p>
+            <p>Code Client: C{{ facture.consultant.id }}</p>
+        </div>
+        <div id="blocFactureNumero">
+            <p class="numFacture"><b>Facture N° {{ facture.numeroFacture }} </b></p>
+            <p class="dateFacture">Date : {{ facture.date|date('d/m/Y', "Europe/Paris")  }}</p>
+        </div>
+        <div id="blocPrestation">
+        <hr>
+        <h3>Prestation</h3>
+        <table class="tableau">
+            <tr>
+                <td class="tableauEntete">Référence</td>
+                <td class="tableauEntete">Description</td>
+                <td class="tableauEntete">Prix Unitaire HT</td>
+                <td class="tableauEntete">Quantité</td>
+                <td class="tableauEntete">Montant HT en €</td>
+            </tr>
+            {% for ligneFacture in facture.ligneFactures %}
+            <tr>
+                <td class="tableauEntete">P{{ ligneFacture.service.id }}</td>
+                <td class="tableauEntete">{{ ligneFacture.service.libelle }}</td>
+                <td class="tableauEntete prix">{{ ligneFacture.montant }}</td>
+                <td class="tableauEntete prix">{{ ligneFacture.quantite }}</td>
+                <td class="tableauEntete prix">
+                    {{ (ligneFacture.montant * ligneFacture.quantite)|number_format(2,',',' ') }}
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="3"></td>
+                <td class="tableauEntete prix">Total =</td>
+                <td class="tableauEntete prix">
+                    <b>{{ facture.montantTotal |number_format(2,',',' ')}} </b>
+                </td>
+            </tr>
+        </table>
+        </div>
+        <div id="blocFin">
+            <p>Echéance :  {{ facture.date|date_modify("+30 day")|date("d/m/Y") }}  </p>
+            <p>Moyen de règlement:  {{ facture.TypeDePaiement.libelle }}</p>
+            <br>
+            <p>Merci pour votre confiance.</p>
+            <p>Exonéré de TVA, selon l'article 293-B du CGI</p>
+        </div>
+        </main>
+        <footer style="vertical-align: bottom">
+            <hr>
+            <p>Retrouvez nous  : </p>
+            <ul>
+                <li>sur Facebook :<a href="https://www.facebook.com/EnergieDenisSanchez">https://www.facebook.com/EnergieDenisSanchez</a></li>
+                <li>notre Site Web: <a href="https://energie-denis-sanchez.fr">https://energie-denis-sanchez.fr</a></li>
+            </ul>
+            <p class="small centrer">&copy;2016 - {{ "now"|date("Y") }} Energie~Denis~Sanchez</p>
+        </footer>
+     </body>
+</html>

@@ -1,0 +1,70 @@
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+    <div class="consultant_show_btn col-sm-12 group_buttons">
+    <button class="btn btn-secondary btn-sm" type="submit">{{ button_label|default('Enregistrer') }}</button>
+    <button class="btn btn-secondary btn-sm" type="button"><a href="{{ path('rendez_vous') }}">Retour à la liste</a>
+    </button>
+    {% if (rendez_vou.id != null ) %}
+        {{ include('rendez_vous/_delete_form.html.twig') }}
+    {% endif %}
+    </div>
+    {{ form_end(form) }}
+
+
+{# https://www.youtube.com/watch?v=cYMq-9Znh1U&ab_channel=OverSeasMediaOverSeasMedia  -> video explicative de typeahead #}
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var consultants = new Bloodhound(
+            {
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('consultant'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+                remote: {
+                    url: "{{ path('rendez_vous_handle_search') }}/%QUERY%",
+                    wildcard: '%QUERY%',
+                    filter: function (consultants) {
+                        return $.map(consultants, function (consultant) {
+                            return {
+                                consultant_nom: consultant.nom,
+                                consultant_prenom: consultant.prenom,
+                                value: consultant.nom + ' - ' + consultant.prenom, //this format,
+                                other: consultant //full access to object
+                            }
+                        })
+                    }
+
+
+                }
+            }
+        )
+        consultants.initialize();
+
+        $('#rendez_vous_consultant').typeahead(
+            {
+                hint: true
+            },
+            {
+                name: 'consultants',
+                source: consultants,
+
+                display: 'value',
+                templates: {
+                    suggestion: function (data) {
+                        console.log(data)
+                        return `<div>` + data.consultant_nom + ` ` + data.consultant_prenom + `</div>`
+                    },
+
+
+                }
+
+            }
+        ).on('typeahead:selected  typeahead:autocompleted', function ($e, consultants) {
+            //You may access the value object here
+            return consultants.id;
+        })
+    })
+
+
+</script>

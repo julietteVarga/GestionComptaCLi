@@ -1,0 +1,139 @@
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-12">
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="numeroFacture">
+                        <div class="text_ligne">
+                            {{ form_label (form.numeroFacture) }}
+                        </div>
+                        <div class="widget_consultant">
+                            {{ form_widget (form.numeroFacture) }}
+                        </div>
+                        {{ form_errors (form.numeroFacture) }}
+                    </div>
+                    <div class="date">
+                        <div class="text_ligne">
+                            {{ form_label (form.date) }}
+                        </div>
+                        <div class="widget_consultant">
+                            {{ form_widget (form.date) }}
+                        </div>
+                        {{ form_errors (form.date) }}
+                    </div>
+                    <div class="typeDePaiement">
+                        <div class="text_ligne">
+                            {{ form_label (form.typeDePaiement) }}
+                        </div>
+                        <div class="widget_consultant">
+                            {{ form_widget (form.typeDePaiement) }}
+                        </div>
+                        {{ form_errors (form.typeDePaiement) }}
+                    </div>
+                    <div class="numeroChequeOuPaypal">
+                        <div class="text_ligne">
+                            {{ form_label (form.numeroChequeOuPaypal) }}
+                        </div>
+                        <div class="widget_consultant">
+                            {{ form_widget (form.numeroChequeOuPaypal) }}
+                        </div>
+                        {{ form_errors (form.numeroChequeOuPaypal) }}
+                    </div>
+                    <div class="nom">
+                        <div class="text_ligne">
+                            {{ form_label (form.consultant) }}
+                        </div>
+                        <div class="widget_consultant" >
+                            {{ form_widget (form.consultant) }}
+                        </div>
+                        {{ form_errors (form.consultant) }}
+                    </div>
+                </div>
+                <div class="col-sm-6" id="ligneFacture"
+                     data-prototype="{{ form_widget(form.ligneFactures.vars.prototype)|e('html_attr') }}">
+                    <h2> {{ form_label (form.ligneFactures, 'ligne de facture') }} </h2>
+                    {% for widget in form.ligneFactures %}
+                        <div class="panel panel-primary">
+                            {# {{ widget.vars.value.facture.numeroFacture }} #}
+                            <div class="panel-body">
+                                {{ form_widget (widget) }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {{ form_errors (form.ligneFactures) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_widget(form) }}
+
+    <div class="consultant_show_btn col-sm-12 group_buttons">
+        <button class="btn btn-secondary btn-sm" type="submit">{{ button_label|default('Enregistrer') }}</button>
+        <button class="btn btn-secondary btn-sm" type="button"><a href="{{ path('facture') }}">Retour à la liste</a>
+        </button>
+        {% if (facture.id != null ) %}
+        {{ include('facture/_delete_form.html.twig') }}
+        {% endif %}
+    </div>
+
+
+
+    {{ form_end(form) }}
+
+    {# https://www.youtube.com/watch?v=cYMq-9Znh1U&ab_channel=OverSeasMediaOverSeasMedia  -> video explicative de typeahead#}
+    <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function (){
+            var consultants = new Bloodhound(
+                {
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('consultant'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+                    remote :{
+                        url : "{{ path('rendez_vous_handle_search') }}/%QUERY%",
+                        wildcard: '%QUERY%',
+                        filter: function (consultants){
+                            return $.map(consultants,function(consultant){
+                                return{
+                                    consultant_nom:consultant.nom,
+                                    consultant_prenom: consultant.prenom,
+                                    value: consultant.nom+' - '+consultant.prenom, //this format,
+                                    other: consultant //full access to object
+                                }
+                            })
+                        }
+
+
+                    }
+                }
+            )
+            consultants.initialize();
+
+            $('#facture_consultant').typeahead(
+                {
+                    hint :true
+                },
+                {
+                    name: 'consultants',
+                    source: consultants,
+
+                    display: 'value',
+                    templates:{
+                        suggestion: function(data){
+                            console.log(data)
+                            return `<div>`+data.consultant_nom+ ` `+ data.consultant_prenom+  `</div>`
+                        },
+
+
+                    }
+
+                }
+
+            ).on('typeahead:selected  typeahead:autocompleted', function($e, consultants){
+                //You may access the value object here
+                return consultants.id;
+            })})
+
+
+    </script>

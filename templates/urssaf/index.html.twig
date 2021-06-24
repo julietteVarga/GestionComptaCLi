@@ -1,0 +1,274 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Déclaration à l'Urssaf{% endblock %}
+
+{% block main %}
+<div class="container-fluid-urssaf">
+    <h1>Déclaration à l'Urssaf</h1>
+    <div class="urssaf"> <div> Chiffre affaire pour le 1er Trimestre = <b> {{ montantTotal1erTrimestre|number_format(2, '.', ' ') }}</b></div> <div> <img src="{{ asset('img/alerte.jpg') }}" alt="alert" id="alert" class="alerte"> Date limite de paiement: <b>30/04/{{ anneeEnCours }}</b></div> </div>
+
+    <table border="1">
+        <tr>
+            <th>Code de gestion</th>
+            <th>Activité</th>
+            <th>Chiffre d'affaires trimestriel arrondi</th>
+            <th>Taux</th>
+            <th>Cotisations et impots arrondis</th>
+        </tr>
+        <tr>
+            <td class="droite">630</td>
+            <td>Ventes de marchandises</td>
+            <td class="droite">{{ chiffreAffaire1erTrimestreVenteMarchandise|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxVenteMarchandise|number_format(2)  }}</td>
+            <td class="droite">{{ calculVenteMarchandise1erTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">645</td>
+            <td >Prestations de services commerciales ou artisanales</td>
+            <td class="droite">{{ chiffreAffaire1erTrimestrePrestationsServicesCommerciales|number_format(2, '.', ' ')  }}</td>
+            <td class="droite">{{ tauxPrestationsDeServicesCommercialesOuArtisanales|number_format(2) }}</td>
+            <td class="droite">{{ calculPrestationsDeServices1erTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">684</td>
+            <td>Autres prestations de services</td>
+            <td class="droite">{{ montantTotal1erTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite"> {{ tauxAutresPrestationsDeService|number_format(2)}}</td>
+            <td class="droite">{{ calculAutresPrestationsServices1erTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">572</td>
+            <td>Formation artisan obligatoire</td>
+            <td class="droite">{{ montantTotal1erTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxFormationArtisan|number_format(2) }}</td>
+            <td class="droite">{{ calculFormationArtisan1erTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">060</td>
+            <td>Taxe CMA Vente</td>
+            <td class="droite">{{ montantTotal1erTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxTaxeCMAVente|number_format(2) }}</td>
+            <td class="droite">{{ calculTaxeCMAVente1erTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">061</td>
+            <td >Taxe CMA Service</td>
+            <td class="droite">{{ montantTotal1erTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxTaxeCMAService|number_format(2) }}</td>
+            <td class="droite">{{ calculTaxeCMAService1erTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Total des cotisations et de l'impot</td>
+            <td class="droite">{{ calculTotalCotisationEtImpot1erTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Déduction</td>
+            <td class="droite">{{ deduction1erTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Montant à payer</td>
+            <td class="droite"><b>{{ montantAPayer1erTrimestre|number_format(2, '.', ' ') }}</b></td>
+        </tr>
+    </table>
+
+    <hr>
+    <div class="urssaf"> <div>Chiffre affaire pour le 2ieme Trimestre = <b> {{ montantTotal2emeTrimestre|number_format(2, '.', ' ')}} </b> </div> <div> <img src="{{ asset('img/alerte.jpg') }}" alt="alert" id="alert" class="alerte"> Date limite de paiement: <b>02/08/{{ anneeEnCours }}</b></div> </div>
+
+    <table border="1">
+        <tr>
+            <th>Code de gestion</th>
+            <th>Activité</th>
+            <th>Chiffre d'affaires trimestriel arrondi</th>
+            <th>Taux</th>
+            <th>Cotisations et impots arrondis</th>
+        </tr>
+        <tr>
+            <td class="droite">630</td>
+            <td>Ventes de marchandises</td>
+            <td class="droite">{{ chiffreAffaire2emeTrimestreVenteMarchandise|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxVenteMarchandise|number_format(2)  }}</td>
+            <td class="droite">{{ calculVenteMarchandise2emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">645</td>
+            <td >Prestations de services commerciales ou artisanales</td>
+            <td class="droite">{{ chiffreAffaire2emeTrimestrePrestationsServicesCommerciales|number_format(2, '.', ' ')  }}</td>
+            <td class="droite">{{ tauxPrestationsDeServicesCommercialesOuArtisanales|number_format(2) }}</td>
+            <td class="droite">{{ calculPrestationsDeServices2emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">684</td>
+            <td>Autres prestations de services</td>
+            <td class="droite">{{ montantTotal2emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite"> {{ tauxAutresPrestationsDeService|number_format(2)}}</td>
+            <td class="droite">{{ calculAutresPrestationsServices2emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">572</td>
+            <td>Formation artisan obligatoire</td>
+            <td class="droite">{{ montantTotal2emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxFormationArtisan|number_format(2) }}</td>
+            <td class="droite">{{ calculFormationArtisan2emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">060</td>
+            <td>Taxe CMA Vente</td>
+            <td class="droite">{{ montantTotal2emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxTaxeCMAVente|number_format(2) }}</td>
+            <td class="droite">{{ calculTaxeCMAVente2emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">061</td>
+            <td >Taxe CMA Service</td>
+            <td class="droite">{{ montantTotal2emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxTaxeCMAService|number_format(2) }}</td>
+            <td class="droite">{{ calculTaxeCMAService2emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Total des cotisations et de l'impot</td>
+            <td class="droite">{{ calculTotalCotisationEtImpot2emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Déduction</td>
+            <td class="droite">{{ deduction2emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Montant à payer</td>
+            <td class="droite"><b>{{ montantAPayer2emeTrimestre|number_format(2, '.', ' ') }}</b></td>
+        </tr>
+    </table>
+
+    <hr>
+    <div class="urssaf"> <div> Chiffre affaire pour le 3ieme Trimestre = <b>{{ montantTotal3emeTrimestre|number_format(2, '.', ' ') }} </b> </div> <div> <img src="{{ asset('img/alerte.jpg') }}" alt="alert" id="alert" class="alerte"> Date limite de paiement: <b>02/11/{{ anneeEnCours }}</b></div> </div>
+
+    <table border="1">
+        <tr>
+            <th>Code de gestion</th>
+            <th>Activité</th>
+            <th>Chiffre d'affaires trimestriel arrondi</th>
+            <th>Taux</th>
+            <th>Cotisations et impots arrondis</th>
+        </tr>
+        <tr>
+            <td class="droite">630</td>
+            <td>Ventes de marchandises</td>
+            <td class="droite">{{ chiffreAffaire3emeTrimestreVenteMarchandise|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxVenteMarchandise|number_format(2)  }}</td>
+            <td class="droite">{{ calculVenteMarchandise3emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">645</td>
+            <td >Prestations de services commerciales ou artisanales</td>
+            <td class="droite">{{ chiffreAffaire3emeTrimestrePrestationsServicesCommerciales|number_format(2, '.', ' ')  }}</td>
+            <td class="droite">{{ tauxPrestationsDeServicesCommercialesOuArtisanales|number_format(2) }}</td>
+            <td class="droite">{{ calculPrestationsDeServices3emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">684</td>
+            <td>Autres prestations de services</td>
+            <td class="droite">{{ montantTotal3emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite"> {{ tauxAutresPrestationsDeService|number_format(2)}}</td>
+            <td class="droite">{{ calculAutresPrestationsServices3emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">572</td>
+            <td>Formation artisan obligatoire</td>
+            <td class="droite">{{ montantTotal3emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxFormationArtisan|number_format(2) }}</td>
+            <td class="droite">{{ calculFormationArtisan3emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">060</td>
+            <td>Taxe CMA Vente</td>
+            <td class="droite">{{ montantTotal3emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxTaxeCMAVente|number_format(2) }}</td>
+            <td class="droite">{{ calculTaxeCMAVente3emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">061</td>
+            <td >Taxe CMA Service</td>
+            <td class="droite">{{ montantTotal3emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxTaxeCMAService|number_format(2) }}</td>
+            <td class="droite">{{ calculTaxeCMAService3emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Total des cotisations et de l'impot</td>
+            <td class="droite">{{ calculTotalCotisationEtImpot3emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Déduction</td>
+            <td class="droite">{{ deduction3emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Montant à payer</td>
+            <td class="droite"><b>{{ montantAPayer3emeTrimestre|number_format(2, '.', ' ') }}</b></td>
+        </tr>
+    </table>
+    <hr>
+    <div class="urssaf"> <div> Chiffre affaire pour le 4ieme Trimestre = <b> {{ montantTotal4emeTrimestre|number_format(2, '.', ' ')}} </b> </div> <div> <img src="{{ asset('img/alerte.jpg') }}" alt="alert" id="alert" class="alerte"> Date limite de paiement: <b>31/01/{{ anneeEnCours +1 }}</b></div> </div>
+
+    <table border="1">
+        <tr>
+            <th>Code de gestion</th>
+            <th>Activité</th>
+            <th>Chiffre d'affaires trimestriel arrondi</th>
+            <th>Taux</th>
+            <th>Cotisations et impots arrondis</th>
+        </tr>
+        <tr>
+            <td class="droite">630</td>
+            <td>Ventes de marchandises</td>
+            <td class="droite">{{ chiffreAffaire4emeTrimestreVenteMarchandise|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxVenteMarchandise|number_format(2)  }}</td>
+            <td class="droite">{{ calculVenteMarchandise4emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">645</td>
+            <td >Prestations de services commerciales ou artisanales</td>
+            <td class="droite">{{ chiffreAffaire4emeTrimestrePrestationsServicesCommerciales|number_format(2, '.', ' ')  }}</td>
+            <td class="droite">{{ tauxPrestationsDeServicesCommercialesOuArtisanales|number_format(2) }}</td>
+            <td class="droite">{{ calculPrestationsDeServices4emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">684</td>
+            <td>Autres prestations de services</td>
+            <td class="droite">{{ montantTotal4emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite"> {{ tauxAutresPrestationsDeService|number_format(2)}}</td>
+            <td class="droite">{{ calculAutresPrestationsServices4emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">572</td>
+            <td>Formation artisan obligatoire</td>
+            <td class="droite">{{ montantTotal4emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxFormationArtisan|number_format(2) }}</td>
+            <td class="droite">{{ calculFormationArtisan4emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">060</td>
+            <td>Taxe CMA Vente</td>
+            <td class="droite">{{ montantTotal4emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxTaxeCMAVente|number_format(2) }}</td>
+            <td class="droite">{{ calculTaxeCMAVente4emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td class="droite">061</td>
+            <td >Taxe CMA Service</td>
+            <td class="droite">{{ montantTotal4emeTrimestre|number_format(2, '.', ' ') }}</td>
+            <td class="droite">{{ tauxTaxeCMAService|number_format(2) }}</td>
+            <td class="droite">{{ calculTaxeCMAService4emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Total des cotisations et de l'impot</td>
+            <td class="droite">{{ calculTotalCotisationEtImpot4emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Déduction</td>
+            <td class="droite">{{ deduction4emeTrimestre|number_format(2, '.', ' ') }}</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="droite">Montant à payer</td>
+            <td class="droite"><b>{{ montantAPayer4emeTrimestre|number_format(2, '.', ' ') }}</b></td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

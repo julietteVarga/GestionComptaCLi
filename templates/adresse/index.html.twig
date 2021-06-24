@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adresse{% endblock %}
+
+{% block main %}
+    <h1>Adresses</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rue</th>
+                <th>Ville</th>
+                <th>Cp</th>
+                <th>Pays</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adresse in adresses %}
+            <tr>
+                <td>{{ adresse.id }}</td>
+                <td>{{ adresse.rue }}</td>
+                <td>{{ adresse.ville }}</td>
+                <td>{{ adresse.cp }}</td>
+                <td>{{ adresse.pays }}</td>
+                <td>
+                    <a href="{{ path('adresse_show', {'id': adresse.id}) }}">afficher</a>
+                    <a href="{{ path('adresse_edit', {'id': adresse.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">pas d'enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('adresse_new') }}">Créer une nouvelle adresse</a>
+{% endblock %}

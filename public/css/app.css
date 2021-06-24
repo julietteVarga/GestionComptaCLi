@@ -1,0 +1,446 @@
+* {
+    font-family: 'Akaya Kanadaka', cursive;
+}
+
+body {
+    background-color: #FCF7F8;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, main, footer {
+    padding: 10px 20px;
+
+}
+
+main {
+    flex-grow: 1;
+    margin: 1% 3% 1% 3%;
+}
+
+footer {
+    text-align: center;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+}
+
+.navbar-expand-lg {
+    background-color: #E8EBF7;
+    display: unset;
+    align-content: space-between;
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: unset;
+    width: auto;
+    /*margin-top: 20px;
+    margin-bottom: 10px;
+    margin-right: 150px;
+    margin-left: 99px;*/
+}
+
+.dropdown-item{
+    background-color: #a9b5c1;
+
+
+}
+.bonjour{
+   display: flow-root;
+   padding-left:15px;
+   padding-top:15px;
+}
+.card{
+    justify-content: flex-end;
+    display: flex;
+    max-width: 500px;
+    padding: 100px;
+}
+.loginForm{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-secondaries {
+    box-shadow: 5px 5px 10px 3px rgba(224, 220, 220, 0.49);
+    background-color: rgba(127, 200, 248, 0.65);
+    padding: 10px 10px 10px;
+    cursor: pointer;
+    text-align: center !important;
+    border-radius: 3px;
+}
+
+
+.aligner {
+    text-align: center;
+    margin: 10px 265px;
+
+}
+.imgAdd{
+    width: 15px;
+    height: 15px;
+}
+.button_ligne_facture{
+    margin-left: 330px;
+    margin-top: 22px;
+    height: 13px;
+    width: max-content;
+    display: block;
+    PADDING-TOP: -24PX;
+    PADDING-BOTTOM: 1PX
+}
+.ligneFactures{
+    margin-bottom: auto;
+    margin-top: -63px;
+    padding: inherit;
+    display: table-caption;
+}
+.btn-primary{
+    background-color: #39A9DB;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center !important;
+    border-style: solid;
+    box-shadow: 5px 5px 10px 3px grey;
+}
+.suprbtn{
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center !important;
+    WIDTH: 1EM;
+}
+.btn-danger{
+    background-color: #da2945;
+}
+.form_groupe{
+    display: flex;
+    margin-bottom: auto;
+}
+.graphic{
+    margin: inherit;
+}
+
+
+.btn-secondary {
+    background-color: #E9B872;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    cursor: pointer;
+    text-align: center !important;
+    border-style: solid;
+    box-shadow: 5px 5px 10px 3px grey;
+}
+
+.creer{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em
+}
+.consultant_show_btn{
+    margin-left: auto;
+    width: fit-content;
+    margin-top: 50px;
+    display: flex;
+}
+.btnFromCons{
+    margin-left: auto;
+    width: fit-content;
+    margin-top: 50px;
+    display: flex;
+    margin-bottom: -91px;
+    width: 222px;
+}
+.nouvelle_facture_btn{
+    margin-left: auto;
+    display: table;
+    width: fit-content;
+    margin-top: 50px;
+}
+.table-show {
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.alerte{
+    max-width: 35px;
+}
+
+.tdBouton {
+    text-align: center;
+    margin: 0 fill;
+}
+
+.label_ligne {
+    text-align: right;
+    padding-right: 20px;
+    min-width: 200px;
+}
+.text_ligne{
+    min-width: 200px;
+    padding-left: 5px;
+}
+
+.widget_adresse{
+    width: max-content;
+}
+
+.table {
+    border-collapse: collapse;
+    background-color: rgba(252, 247, 248, 0.13);
+    border-style: unset;
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: auto;
+    box-shadow: 5px 5px 10px 3px #afb2b7;
+}
+.editer_facture{
+    margin-right: auto;
+    margin-left: auto;
+    display: inherit;
+}
+
+.table-responsive{
+    margin-left: auto;
+    margin-right: auto;
+    table-layout: fixed;
+    max-width: max-content;
+}
+.widget_consultant{
+    width: 284px;
+    display: grid;
+}
+.card-group{
+    padding-top: 100px;
+}
+.panel-body{
+    display: inline-block;
+}
+
+.font_container {
+    padding: 25px;
+    background-color: rgba(93, 166, 234, 0.36);
+    margin: auto;
+    width: -webkit-fill-available;
+    display: flex;
+    justify-content: space-between;
+}
+.container-fluid-urssaf{
+    margin-right: auto;
+    margin-left: auto;
+    flex-direction: unset;
+    width: auto;
+    display: table;
+}
+.urssaf{
+    display: flex;
+    justify-content: space-between;
+    margin-left: inherit;
+    margin-right: inherit;
+}
+.add-form-consultant{
+padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display:flex;
+    justify-content: space-between;
+    margin: 30px;
+    text-space: 25px;
+}
+.form1{
+    justify-content: space-between;
+}
+.form2{
+    justify-content: space-between;
+}
+.adresse{
+    width: fit-content;
+}
+.enregistrer{
+    padding-bottom: 200px;
+    margin-bottom: auto;
+    justify-content: flex-end;
+}
+.photoShow {
+    max-width: inherit;
+    max-height: inherit;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 10px 3px grey;
+}
+.photo{
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-right: auto;
+    display: flex;
+}
+.choisirPhoto{
+    margin-top: 23px;
+}
+/*@keyframes myfirst {
+   0%   {background: beige; left: 0px; top: 0px;}
+   25%  {background: burlywood; left: 200px; top: 0px;}
+   50%  {background:coral; left: 200px; top: 200px;}
+   75%  {background: darksalmon; left: 0px; top: 200px;}
+   100% {background: blanchedalmond; left: 0px; top: 0px;}
+}*/
+.add-form label {
+    display: inline-flex;
+    margin-top: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: -webkit-fill-available;
+}
+
+
+.add-form input,
+.add-form textarea {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-form button {
+    margin-top: 15px;
+}
+
+
+.add-form label {
+    display: block;
+    margin-top: 15px;
+}
+
+.add-form input,
+.add-form textarea {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-form button {
+    margin-top: 15px;
+}
+
+.alert {
+    padding: 20px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+
+.alert-success {
+    background-color: #718C00;
+
+}
+
+.alert-warning {
+    background-color: orange;
+
+}
+
+#sous-titre{
+    text-align: center;
+    color: gray;
+}
+
+.chart{
+    height: 40%;
+    width: 80%;
+    padding-left: 25%;
+}
+.form_parent {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+.button_form{
+    margin-left: 10px ;
+    margin-right: 10px ;
+}
+
+#calendrier{
+    height: 500px;
+    width: 700px;
+    margin-left: 30%;
+    margin-right: 20%;
+
+}
+.btn_rdv{
+    margin-left: auto;
+    display: table;
+    width: fit-content;
+}
+/*------------------------------------------------------------------*/
+/*                  Animation elephant bas de page                  */
+/*------------------------------------------------------------------*/
+#logophp {
+    max-width: 32px;
+    animation-duration: 7s;
+    animation-name: move;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    position: relative;
+}
+
+@keyframes move {
+    fro {
+        transform: rotate(0deg);
+        left: 0;
+    }
+    to {
+        transform: rotate(10deg);
+        left: calc(40% - 32px);
+    }
+}
+
+
+/*------------------------------------------------------------------*/
+/*                FIN Animation elephant bas de page                */
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+/*                          FACTURE PDF                             */
+/*------------------------------------------------------------------*/
+.facturepdf {
+    background-color: #6290C8;
+}
+
+#blocFactureEnergieDenisSanchez {
+    float: left;
+    width: 50%;
+}
+
+#blocFactureConsultant {
+    float: left;
+    width: 48%;
+}
+
+/*------------------------------------------------------------------*/
+/*                          FIN FACTURE PDF                         */
+/*------------------------------------------------------------------*/
+
+.droite{
+    text-align: right;
+}
+
+.form-group>.col-sm-2 {
+    width:30%;
+}
+.form-group>.col-sm-10 {
+    width:70%;
+}

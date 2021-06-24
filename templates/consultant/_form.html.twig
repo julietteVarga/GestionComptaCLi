@@ -1,0 +1,166 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-12 col-md-6 col-lg-4 ">
+            {{ form_start(form) }}
+            <div class="sexe">
+                <div class="text_ligne">
+                    {{ form_label (form.sex) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.sex) }}
+                </div>
+                {{ form_errors (form.sex) }}
+            </div>
+            <div class="nom">
+                <div class="text_ligne">
+                    {{ form_label (form.nom) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.nom) }}
+                </div>
+                {{ form_errors (form.nom) }}
+            </div>
+            <div class="prenom">
+                <div class="text_ligne">
+                    {{ form_label (form.prenom) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.prenom) }}
+                </div>
+                {{ form_errors (form.prenom) }}
+            </div>
+            <div class="adresse">
+                <div class="text_ligne">
+                    {{ form_label (form.adresse) }}
+                </div>
+                {{ form_widget (form.adresse) }}
+                {{ form_errors (form.adresse) }}
+            </div>
+            <div class="email">
+                <div class="text_ligne">
+                    {{ form_label (form.email) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.email) }}
+                </div>
+                {{ form_errors (form.email) }}
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-auto">
+            <div class="tel">
+                <div class="text_ligne">
+                    {{ form_label (form.tel) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.tel) }}
+                </div>
+                {{ form_errors (form.tel) }}
+            </div>
+            <div class="villeNaissance">
+                <div class="text_ligne">
+                    {{ form_label (form.villeNaissance) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.villeNaissance) }}
+                </div>
+                {{ form_errors (form.villeNaissance) }}
+            </div>
+            <div class="dateNaissance">
+                <div class="text_ligne">
+                    {{ form_label (form.dateNaissance) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.dateNaissance) }}
+                </div>
+                {{ form_errors (form.dateNaissance) }}
+            </div>
+            <div class="paysNaissance">
+                <div class="text_ligne">
+                    {{ form_label (form.paysNaissance) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.paysNaissance) }}
+                </div>
+                {{ form_errors (form.paysNaissance) }}
+            </div>
+            <div class="heureNaissance">
+                <div class="text_ligne">
+                    {{ form_label (form.heureNaissance) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.heureNaissance) }}
+                </div>
+                {{ form_errors (form.heureNaissance) }}
+            </div>
+            <div class="username">
+                <div class="text_ligne">
+                    {{ form_label (form.username) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.username) }}
+                </div>
+                {{ form_errors (form.username) }}
+            </div>
+            <div class="password">
+                <div class="text_ligne">
+                    {{ form_label (form.password) }}
+                </div>
+                <div class="widget_consultant">
+                    {{ form_widget (form.password) }}
+                </div>
+                {{ form_errors (form.password) }}
+            </div>
+
+            <div class="col col-sm-12 col-lg-4 choisirPhoto">
+                <div class="text_ligne">
+                    {{ form_label (form.photos) }}
+                </div>
+                <div class="choisirPhoto">
+                    {{ form_widget (form.photos) }}
+                </div>
+                {{ form_errors (form.photos) }}
+            </div>
+        </div>
+    </div>
+    {# <div class="consultant_show_btn col-sm-12 group_buttons">
+        <button class="btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('consultant') }}">Retourner à la liste</a>
+        </button>
+    {% if (consultant.id != null ) and ( path('consultant_edit', {'id': consultant.id}) or path('consultant_show', {'id': consultant.id}) ) %}
+        {% if  app.request.attributes.get('_route')   == 'consultant_edit' %}
+             <input type="submit" class="btn btn-secondary btn-sm" value="{{ button_label|default('Modifier') }}">
+        {% else %}
+            <input type="submit" class="btn btn-secondary btn-sm" value="{{ button_label|default('Enregistrer') }}">
+         {% endif %}
+         {{ include('consultant/_delete_form.html.twig') }}
+    </div>
+        {% else %}
+    <div class="consultant_show_btn col-sm-12 group_buttons">
+        <button class="btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('consultant') }}">Retourner à la liste</a>
+        </button>
+        {% if   app.request.attributes.get('_route')   == 'consultant_edit' %}
+            <input type="submit" class="btn btn-secondary btn-sm w3-padding w3-display-middle "
+                   value="{{ button_label|default('Modifier') }}">
+        {% else %}
+            <input type="submit" class="btn btn-secondary btn-sm w3-padding w3-display-middle "
+                   value="{{ button_label|default('Enregistrer') }}">
+        {% endif %}
+
+    {% endif %}#}
+    {{ form_widget(form) }}
+         <div class="consultant_show_btn col-sm-12 group_buttons">
+            <input class="btn btn-secondary btn-sm" type="submit" value=" {{ button_label|default('Enregistrer') }}">
+            <button class="btn btn-secondary btn-sm" type="button"><a href="{{ path('consultant') }}">Retour à la liste</a>
+            </button>
+            {% if (consultant.id != null ) %}
+                {{ include('consultant/_delete_form.html.twig') }}
+            {% endif %}
+        </div>
+
+    {{ form_end(form) }}
+</div>
+{# {{ form_row(form.photos) }} #}
+
+
+

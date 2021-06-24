@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Roles{% endblock %}
+
+{% block main %}
+    <h1>Rôles:</h1>
+    <div class="nouvelle_facture_btn col-sm-2 col-md-1">
+        <button class="btn btn-secondary btn-sm w3-padding w3-display-middle" type="button">
+            <a href="{{ path('role_new') }}">Créer un nouveau rôle</a>
+        </button>
+    </div>
+
+    <table class="table" style="margin-top:20px">
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for role in roles %}
+            <tr>
+                <td>{{ role.id }}</td>
+                <td>{{ role.nom }}</td>
+                <td>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-sm-2 col-md-2 offset-md-5 col-lg-1 offset-lg-8">
+                                <button class="btn btn-secondary btn-sm" type="button">
+                                    <a href="{{ path('role_show', {'id': role.id}) }}">Détail</a>
+                                </button>
+                            </div>
+                            <div class="col col-sm-2 col-md-2 col-lg-1">
+                                <button class="btn btn-secondary btn-sm" type="button">
+                                    <a href="{{ path('role_edit', {'id': role.id}) }}">Editer</a>
+                                </button>
+                            </div>
+                            <div class="col col-sm-2 col-md-2 col-lg-1 ">
+                                {{ include('role/_delete_form.html.twig') }}
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun rôle trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="nouvelle_facture_btn col-sm-2 col-md-1">
+        <button class="btn btn-secondary btn-sm w3-padding w3-display-middle" type="button">
+            <a href="{{ path('role_new') }}">Créer un nouveau rôle</a>
+        </button>
+    </div>
+{% endblock %}

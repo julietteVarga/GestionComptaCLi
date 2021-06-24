@@ -1,0 +1,152 @@
+*{
+    font-family: 'Akaya Kanadaka', cursive;
+}
+body{
+    background-color: #6290C8;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, main , footer{
+    padding: 10px 20px;
+}
+
+main {
+    flex: 1;
+}
+
+footer{
+    text-align: center;
+}
+#logo {
+    width: 50px;
+    height: 50px;
+}
+.navbar-light{
+    background-color: #E8EBF7;
+}
+
+
+.btn-secondary{
+    background-color: #09BC8A;
+}
+
+.add-form label{
+    display: block;
+    margin-top: 15px;
+}
+
+.add-form input,
+.add-form textarea{
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-form button{
+    margin-top: 15px;
+}
+
+
+.add-form label{
+    display: block;
+    margin-top: 15px;
+}
+
+.add-form input,
+.add-form textarea{
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-form button{
+    margin-top: 15px;
+}
+
+.alert{
+    padding: 20px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4em;
+}
+.alert-success{
+    background-color: #718C00;
+
+}
+.alert-warning{
+    background-color: orange;
+
+}
+.chart{
+    height: 40%;
+    width: 80%;
+    padding-left: 25%;
+    margin-top: 5%;
+}
+.form_parent {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+.button_form{
+    margin-left: 10px ;
+    margin-right: 10px ;
+}
+
+
+
+/*------------------------------------------------------------------*/
+/*                  Animation elephant bas de page                  */
+/*------------------------------------------------------------------*/
+#logophp {
+    max-width: 32px;
+    animation-duration: 7s;
+    animation-name: move;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    position: relative;
+}
+
+@keyframes move {
+    from {
+        transform: rotate(0deg);
+        left: 0;
+    }
+    to{
+        transform: rotate(10deg);
+        left: calc(50% - 32px);
+    }
+}
+
+
+/*------------------------------------------------------------------*/
+/*                FIN Animation elephant bas de page                */
+/*------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------*/
+/*                          FACTURE PDF                             */
+/*------------------------------------------------------------------*/
+.facturepdf{
+    background-color: #6290C8;
+}
+
+#blocFactureEnergieDenisSanchez{
+    float:left;
+    width: 50%;
+}
+
+#blocFactureConsultant{
+    float:left;
+    width: 48%;
+}
+/*------------------------------------------------------------------*/
+/*                          FIN FACTURE PDF                         */
+/*------------------------------------------------------------------*/
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hc3NldHMvc3R5bGVzL2FwcC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxzQ0FBc0M7QUFDMUM7QUFDQTtJQUNJLHlCQUF5QjtJQUN6QixhQUFhO0lBQ2Isc0JBQXNCO0lBQ3RCLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLGtCQUFrQjtBQUN0Qjs7QUFFQTtJQUNJLE9BQU87QUFDWDs7QUFFQTtJQUNJLGtCQUFrQjtBQUN0QjtBQUNBO0lBQ0ksV0FBVztJQUNYLFlBQVk7QUFDaEI7QUFDQTtJQUNJLHlCQUF5QjtBQUM3Qjs7O0FBR0E7SUFDSSx5QkFBeUI7QUFDN0I7O0FBRUE7SUFDSSxjQUFjO0lBQ2QsZ0JBQWdCO0FBQ3BCOztBQUVBOztJQUVJLGFBQWE7SUFDYixXQUFXO0lBQ1gsc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0ksZ0JBQWdCO0FBQ3BCOzs7QUFHQTtJQUNJLGNBQWM7SUFDZCxnQkFBZ0I7QUFDcEI7O0FBRUE7O0lBRUksYUFBYTtJQUNiLFdBQVc7SUFDWCxzQkFBc0I7QUFDMUI7O0FBRUE7SUFDSSxnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxhQUFhO0lBQ2IsY0FBYztJQUNkLGlCQUFpQjtJQUNqQixrQkFBa0I7SUFDbEIsZ0JBQWdCO0FBQ3BCO0FBQ0E7SUFDSSx5QkFBeUI7O0FBRTdCO0FBQ0E7SUFDSSx3QkFBd0I7O0FBRTVCOztBQUVBLHFFQUFxRTtBQUNyRSxxRUFBcUU7QUFDckUscUVBQXFFO0FBQ3JFO0lBQ0ksZUFBZTtJQUNmLHNCQUFzQjtJQUN0QixvQkFBb0I7SUFDcEIsc0NBQXNDO0lBQ3RDLDhCQUE4QjtJQUM5QixtQ0FBbUM7SUFDbkMsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0k7UUFDSSx1QkFBdUI7UUFDdkIsT0FBTztJQUNYO0lBQ0E7UUFDSSx3QkFBd0I7UUFDeEIsc0JBQXNCO0lBQzFCO0FBQ0o7OztBQUdBLHFFQUFxRTtBQUNyRSxxRUFBcUU7QUFDckUscUVBQXFFOztBQUVyRSxxRUFBcUU7QUFDckUscUVBQXFFO0FBQ3JFLHFFQUFxRTtBQUNyRTtJQUNJLHlCQUF5QjtBQUM3Qjs7QUFFQTtJQUNJLFVBQVU7SUFDVixVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsVUFBVTtBQUNkO0FBQ0EscUVBQXFFO0FBQ3JFLHFFQUFxRTtBQUNyRSxxRUFBcUUsQyIsImZpbGUiOiJhcHAuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiKntcclxuICAgIGZvbnQtZmFtaWx5OiAnQWtheWEgS2FuYWRha2EnLCBjdXJzaXZlO1xyXG59XHJcbmJvZHl7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjI5MEM4O1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBtaW4taGVpZ2h0OiAxMDB2aDtcclxufVxyXG5cclxuaGVhZGVyLCBtYWluICwgZm9vdGVye1xyXG4gICAgcGFkZGluZzogMTBweCAyMHB4O1xyXG59XHJcblxyXG5tYWluIHtcclxuICAgIGZsZXg6IDE7XHJcbn1cclxuXHJcbmZvb3RlcntcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG4jbG9nbyB7XHJcbiAgICB3aWR0aDogNTBweDtcclxuICAgIGhlaWdodDogNTBweDtcclxufVxyXG4ubmF2YmFyLWxpZ2h0e1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI0U4RUJGNztcclxufVxyXG5cclxuXHJcbi5idG4tc2Vjb25kYXJ5e1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzA5QkM4QTtcclxufVxyXG5cclxuLmFkZC1mb3JtIGxhYmVse1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xyXG59XHJcblxyXG4uYWRkLWZvcm0gaW5wdXQsXHJcbi5hZGQtZm9ybSB0ZXh0YXJlYXtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbn1cclxuXHJcbi5hZGQtZm9ybSBidXR0b257XHJcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xyXG59XHJcblxyXG5cclxuLmFkZC1mb3JtIGxhYmVse1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xyXG59XHJcblxyXG4uYWRkLWZvcm0gaW5wdXQsXHJcbi5hZGQtZm9ybSB0ZXh0YXJlYXtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbn1cclxuXHJcbi5hZGQtZm9ybSBidXR0b257XHJcbiAgICBtYXJnaW4tdG9wOiAxNXB4O1xyXG59XHJcblxyXG4uYWxlcnR7XHJcbiAgICBwYWRkaW5nOiAyMHB4O1xyXG4gICAgbWFyZ2luOiAyMHB4IDA7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtc2l6ZTogMS40ZW07XHJcbn1cclxuLmFsZXJ0LXN1Y2Nlc3N7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNzE4QzAwO1xyXG5cclxufVxyXG4uYWxlcnQtd2FybmluZ3tcclxuICAgIGJhY2tncm91bmQtY29sb3I6IG9yYW5nZTtcclxuXHJcbn1cclxuXHJcbi8qLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKi9cclxuLyogICAgICAgICAgICAgICAgICBBbmltYXRpb24gZWxlcGhhbnQgYmFzIGRlIHBhZ2UgICAgICAgICAgICAgICAgICAqL1xyXG4vKi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSovXHJcbiNsb2dvcGhwIHtcclxuICAgIG1heC13aWR0aDogMzJweDtcclxuICAgIGFuaW1hdGlvbi1kdXJhdGlvbjogN3M7XHJcbiAgICBhbmltYXRpb24tbmFtZTogbW92ZTtcclxuICAgIGFuaW1hdGlvbi10aW1pbmctZnVuY3Rpb246IGVhc2UtaW4tb3V0O1xyXG4gICAgYW5pbWF0aW9uLWRpcmVjdGlvbjogYWx0ZXJuYXRlO1xyXG4gICAgYW5pbWF0aW9uLWl0ZXJhdGlvbi1jb3VudDogaW5maW5pdGU7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbn1cclxuXHJcbkBrZXlmcmFtZXMgbW92ZSB7XHJcbiAgICBmcm9tIHtcclxuICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTtcclxuICAgICAgICBsZWZ0OiAwO1xyXG4gICAgfVxyXG4gICAgdG97XHJcbiAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoMTBkZWcpO1xyXG4gICAgICAgIGxlZnQ6IGNhbGMoNTAlIC0gMzJweCk7XHJcbiAgICB9XHJcbn1cclxuXHJcblxyXG4vKi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSovXHJcbi8qICAgICAgICAgICAgICAgIEZJTiBBbmltYXRpb24gZWxlcGhhbnQgYmFzIGRlIHBhZ2UgICAgICAgICAgICAgICAgKi9cclxuLyotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0qL1xyXG5cclxuLyotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0qL1xyXG4vKiAgICAgICAgICAgICAgICAgICAgICAgICAgRkFDVFVSRSBQREYgICAgICAgICAgICAgICAgICAgICAgICAgICAgICovXHJcbi8qLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKi9cclxuLmZhY3R1cmVwZGZ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjNjI5MEM4O1xyXG59XHJcblxyXG4jYmxvY0ZhY3R1cmVFbmVyZ2llRGVuaXNTYW5jaGV6e1xyXG4gICAgZmxvYXQ6bGVmdDtcclxuICAgIHdpZHRoOiA1MCU7XHJcbn1cclxuXHJcbiNibG9jRmFjdHVyZUNvbnN1bHRhbnR7XHJcbiAgICBmbG9hdDpsZWZ0O1xyXG4gICAgd2lkdGg6IDQ4JTtcclxufVxyXG4vKi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSovXHJcbi8qICAgICAgICAgICAgICAgICAgICAgICAgICBGSU4gRkFDVFVSRSBQREYgICAgICAgICAgICAgICAgICAgICAgICAgKi9cclxuLyotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0qLyJdLCJzb3VyY2VSb290IjoiIn0=*/

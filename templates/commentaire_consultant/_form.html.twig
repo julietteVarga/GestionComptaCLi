@@ -1,0 +1,6 @@
+{{ form_start(comment_form) }}
+    {{ form_widget(comment_form) }}
+    <input type="hidden" name="consultant_id" value="{{ consultant.id }}"/>
+    <button class="btn btn-secondary btn-sm w3-padding w3-display-middle" type="submit">
+    {{ button_label|default('Enregistrer') }}</button>
+{{ form_end(comment_form) }}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer l'Adresse{% endblock %}
+
+{% block main %}
+    <h1>Editer adresse</h1>
+
+    {{ include('adresse/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('adresse') }}">Retour à la liste</a>
+
+    {{ include('adresse/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'un commentaire{% endblock %}
+
+{% block body %}
+    <h1>Détail d'un commentaire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commentaire_consultant.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ commentaire_consultant.description }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ commentaire_consultant.date ? commentaire_consultant.date|date('d-m-Y H:i') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('commentaire_consultant_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('commentaire_consultant_edit', {'id': commentaire_consultant.id}) }}">Editer</a>
+
+    {{ include('commentaire_consultant/_delete_form.html.twig') }}
+{% endblock %}

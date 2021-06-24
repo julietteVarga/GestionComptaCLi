@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facture{% endblock %}
+
+{% block main %}
+
+    <h1>Facture du
+        client(e): {{ facture.id ? facture.consultant.nom : '' }} {{ facture.id ? facture.consultant.prenom : '' }}</h1>
+    <div class="table-responsive">
+        <table class="table align-middle table-striped table-hover table-sm">
+
+            <tbody>
+            {# <tr>
+                <th>Id</th>
+                <td>{{ facture.id }}</td>
+            </tr> #}
+            <tr>
+                <th class="label_ligne" scope="col">Numéro de facture:</th>
+                <td class="text_ligne">{{ facture.numeroFacture }}</td>
+            </tr>
+            <tr>
+                <th class="label_ligne" scope="col">Date:</th>
+                <td class="text_ligne">{{ facture.date ? facture.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th class="label_ligne" scope="col">Numéro de cheque ou Paypal:</th>
+                <td class="text_ligne">{{ facture.numeroChequeOuPaypal }}</td>
+            </tr>
+            <tr>
+                <th class="label_ligne" scope="col">Montant:</th>
+                <td class="text_ligne">{{ facture.montantTotal }} €</td>
+            </tr>
+            <tr>
+                <th class="label_ligne" scope="col">Services:</th>
+                <td class="text_ligne">
+                        {% if (facture.ligneFactures != null) %}
+                            <ul>
+                                {% for ligneFacture in facture.ligneFactures %}
+                                    {% if (ligneFacture != null) and (ligneFacture.service!= null) %}
+                                        <li>{{ ligneFacture.service.libelle ?? ' ' }}</li>
+                                    {%  endif%}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="consultant_show_btn col-sm-12 group_buttons">
+
+        <button class="btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('facture') }}">Retourner à la liste</a>
+        </button>
+
+        <button class="btn btn-secondary btn-sm" type="button">
+            <a href="{{ path('facture_edit', {'id': facture.id}) }}">Editer</a>
+        </button>
+
+        <div class="supprimer">
+            {{ include('facture/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+{% endblock %}

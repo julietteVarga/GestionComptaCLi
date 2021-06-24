@@ -1,0 +1,7 @@
+{% if consultant.id != null %}
+<form method="post" action="{{ path('consultant_delete', {'id': consultant.id}) }}"
+      onsubmit="return confirm('Etes-vous sûr de vouloir supprimer ce consultant {{ consultant.nom }}?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ consultant.id) }}">
+    <button class="btn btn-secondary btn-sm w3-padding w3-display-middle text-danger">Supprimer</button>
+</form>
+{% endif %}

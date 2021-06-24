@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer la Facture{% endblock %}
+
+{% block main %}
+
+    <div class="editer_facture">
+        <div class="card-body">
+            <div class="container-fluid">
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-12 ">
+                        <h1>Editer la facture
+                            de {{ facture.id ? facture.consultant.nom : '' }} {{ facture.id ? facture.consultant.prenom : '' }} </h1>
+                        <div>
+                            {{ include('facture/_form.html.twig', {'button_label': 'Modifier'}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

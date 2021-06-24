@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chiffres d'affaires par mois sur les années{% endblock %}
+
+{% block main %}
+
+    <div class="graphic">
+        <form method="post" class="form_parent">
+        {{ form_start (testForm) }}
+
+        <div class="form_groupe">
+            {{ form_label (testForm.annees,'Choisir une année: ',{'label_attr': {'class': 'col-sm-4'}}) }}
+            {{ form_widget (testForm.annees) }}
+            {{ form_errors (testForm.annees) }}
+        </div>
+            <span class="button_form">
+            {{form_widget(testForm.save)}}
+            </span>
+
+
+
+        <div class="form_groupe">
+            {{ form_label (testForm.anneesTyped) }}
+            {{ form_widget (testForm.anneesTyped) }}
+            {{ form_errors (testForm.anneesTyped) }}
+        </div>
+            <span class="button_form">
+            {{form_widget(testForm.filtrer)}}
+            </span>
+
+    </form>
+    </div>
+
+        <div class="chart">
+            {{ render_chart(chart) }}
+        </div>
+
+{% endblock %}
